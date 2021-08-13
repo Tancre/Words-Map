@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Words Map</title>
+  <script language="javascript" type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="./assets/js/lib/multidraggable.js" charset="utf-8"></script>
+  <style>
+    body {
+      position: relative;
+      width: 2000px;
+      height: 2000px;
+    }
+
+    span:hover {
+      outline: 1px gray solid;
+    }
+
+    #selectWrapper {
+      width: 200px;
+    }
+
+    #textArea {
+      width: 250px;
+      height: 100px;
+    }
+
+    #regex {
+      width: 250px;
+      display: none;
+    }
+
+    .draggable {
+      position: absolute;
+      cursor: grab;
+      background: none;
+    }
+
+    .resizable {
+      /* width: 150px;
+        height: 150px; */
+      padding: 0.2em;
+    }
+
+    .ui-widget-content {
+      border: none;
+    }
+
+    #dropArea {
+      width: 250px;
+      height: 100px;
+    }
+
+    .selected {
+      outline: border: 1px red dotted;
+    }
+
+    .ui-selected {
+      outline: 1px red dotted;
+    }
+
+    /* #multidraggable {
+      display: contents;
+      border: 2px red solid;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2000px;
+      height: 2000px;
+      z-index: -1;
+    } */
+
+    .non-selectable {
+      position: unset !important;
+    }
+  </style>
+</head>
+
+<body id="multidraggable">
+  <h1 id="title" class="non-selectable">Words Map</h1>
+  <div id="selectWrapper" class="non-selectable">
+    <select id="selectValue">
+      <option value="0">Text</option>
+      <option value="1">Text + linebreaks</option>
+      <option value="2">Lines</option>
+      <option value="3">Words</option>
+      <option value="4">Regex</option>
+    </select>
+  </div>
+  <input id="regex" class="non-selectable" value="Enter Regex here!" type="text">
+
+  <textarea id="textArea" class="non-selectable">Write here or drop a file!</textarea>
+  <button id="submit" class="non-selectable">Run</button>
+</body>
+
+<script type="text/javascript">
+  $('#multidraggable').multidraggable();
+</script>
+<script src="./assets/js/modules/Setup.js"></script>
+<script src="./assets/js/modules/Splitter.js"></script>
+<script src="./assets/js/modules/Events.js"></script>
+<script src="./assets/js/modules/DragResize.js"></script>
+</body>
+
+</html>
