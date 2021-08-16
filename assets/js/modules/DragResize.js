@@ -4,21 +4,29 @@ class DragResize {
         this.drag();
         this.setZindex();
         this.handleCursor();
+        this.multidrag();
         //this.test();
         //this.resize();
     }
 
     drag() {
         $('.draggable').draggable({ containment: "window" }, {            // Setup dragging and containment
-            start: (event, ui) => $(this).css("z-index", this.zIndex++)    // Initialize z-index for handelr
+            start: (event, ui) => {
+                $(event.target).css("z-index", this.zIndex++)    // Initialize z-index for handelr
+                console.log(event.target);
+            }
         });
     }
 
+    multidrag() {
+        $('#multidraggable').multidraggable();
+    }
+
     setZindex() {
-        $('#dragZone div').click(() => {                              // Setup z-index handler
-            $(this).addClass('top').removeClass('bottom');
-            $(this).siblings().removeClass('top').addClass('bottom');
-            $(this).css("z-index", this.zIndex++);
+        $('#dragZone div').click(event => {                              // Setup z-index handler
+            $(event.target).addClass('top').removeClass('bottom');
+            $(event.target).siblings().removeClass('top').addClass('bottom');
+            $(event.target).css("z-index", this.zIndex++);
         });
     }
 

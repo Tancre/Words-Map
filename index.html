@@ -29,7 +29,8 @@
       width: 200px;
     }
 
-    #textArea {
+    #textArea,
+    #dropArea {
       width: 250px;
       height: 100px;
     }
@@ -55,40 +56,22 @@
       border: none;
     }
 
-    #dropArea {
-      width: 250px;
-      height: 100px;
-    }
-
-    .selected {
-      outline: border: 1px red dotted;
-    }
-
     .ui-selected {
       outline: 1px red dotted;
     }
 
-    /* #multidraggable {
-      display: contents;
-      border: 2px red solid;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 2000px;
-      height: 2000px;
-      z-index: -1;
-    } */
-
-    .non-selectable {
+    .non-selectable,
+    main {
       position: unset !important;
+      outline: unset !important;
     }
   </style>
 </head>
 
-<body id="multidraggable">
+<body id="multidraggable" class="non-selectable">
   <h1 id="title" class="non-selectable">Words Map</h1>
   <div id="selectWrapper" class="non-selectable">
-    <select id="selectValue">
+    <select id="selectValue" class="non-selectable">
       <option value="0">Text</option>
       <option value="1">Text + linebreaks</option>
       <option value="2">Lines</option>
@@ -102,9 +85,6 @@
   <button id="submit" class="non-selectable">Run</button>
 </body>
 
-<script type="text/javascript">
-  $('#multidraggable').multidraggable();
-</script>
 <script src="./assets/js/modules/Setup.js"></script>
 <script src="./assets/js/modules/Splitter.js"></script>
 <script src="./assets/js/modules/Events.js"></script>
