@@ -10,10 +10,9 @@ class DragResize {
     }
 
     drag() {
-        $('.draggable').draggable({ containment: "window" }, {            // Setup dragging and containment
+        $('.draggable').draggable({ containment: "body" }, {            // Setup dragging and containment
             start: (event, ui) => {
                 $(event.target).css("z-index", this.zIndex++)    // Initialize z-index for handelr
-                console.log(event.target);
             }
         });
     }
