@@ -23,24 +23,25 @@
         var topOffset = [];
 
         createSelectable(this, opts);
-        return createDraggable(opts, leftOffset, topOffset);
+        return createDraggable(opts, leftOffset, topOffset); 
     };
 
     function createSelectable(main, opts) {
         $(main).selectable(opts, {
-
             //onCreate RETURN EVENT UI
             create: function (event, ui) {
-                console.log(event)
                 opts.onCreate ? opts.onCreate(event, ui) : {};
+                preventMultidrag();
             },
             //onSelecting RETURN EVENT UI
             selecting: function (event, ui) {
                 opts.onSelecting ? opts.onSelecting(event, ui) : {};
+                preventMultidrag();
             },
             //onSelected RETURN EVENT UI
             selected: function (event, ui) {
                 opts.onSelected ? opts.onSelected(event, ui) : {};
+                preventMultidrag();
             },
             //onStopSelecting RETURN EVENT UI
             stop: function (event, ui) {
@@ -50,19 +51,23 @@
                 });
                 global.group = group;
                 opts.onStopSelecting ? opts.onStopSelecting(event, ui) : {};
+                preventMultidrag();
             },
             //onStartSelecting RETURN EVENT UI
             start: function (event, ui) {
                 opts.onStartSelecting ? opts.onStartSelecting(event, ui) : {};
+                preventMultidrag();
             },
             //onUnselected RETURN EVENT UI
             unselected: function (event, ui) {
                 global.group = [];
                 opts.onUnselected ? opts.onUnselected(event, ui) : {};
+                preventMultidrag();
             },
             //onUnselecting RETURN EVENT UI
             unselecting: function (event, ui) {
                 opts.onUnselecting ? opts.onUnselecting(event, ui) : {};
+                preventMultidrag();
             }
         });
     }
@@ -116,6 +121,13 @@
                 });
             });
         });
+    }
+
+    // Prevent multidrag to act on all the elements that are not SPAN
+    function preventMultidrag() {      
+        let nonSel = document.querySelectorAll(':not(span)');
+        nonSel.forEach(elm => elm.classList.remove('ui-selectee', 'ui-selected'));
+        console.log('whyyyy')
     }
 
 }(jQuery));
