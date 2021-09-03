@@ -1,5 +1,7 @@
 class Splitter {
   constructor(content) {
+    this.w = window.pageXOffset + (window.innerWidth/2);
+    this.h = window.pageYOffset + (window.innerHeight/2);
     this.content = content;
   }
 
@@ -36,12 +38,17 @@ class Splitter {
   createElt(elt) {
     let p = createSpan(elt);
     p.addClass('ui-widget-content draggable resizable');
+    let posX = this.w - (p.elt.offsetWidth/2);
+    let posY = this.h - (p.elt.offsetHeight/2);
+    p.position(posX, posY);
   }
 
   createEltPos(elt, y) {
     let p = createSpan(elt);
     p.addClass('ui-widget-content draggable resizable');
-    p.position(10, y);
+    let posX = this.w - (p.elt.offsetWidth/2);
+    let posY = this.h - (p.elt.offsetHeight/2) - 500 + y;
+    p.position(posX, posY);
   }
 }
 
