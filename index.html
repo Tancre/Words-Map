@@ -18,25 +18,27 @@
 </head>
 
 <body id="multidraggable" class="non-selectable">
-  <div id="menu">
-    <h1 id="title" class="non-selectable">Words Map</h1>
+  <aside>
+    <div id="menu">
+      <h1 id="title" >Words Map</h1>
 
-    <div id="selectWrapper" class="non-selectable">
-      <select id="selectValue" class="non-selectable">
-        <option value="0">Text</option>
-        <option value="1">Text + linebreaks</option>
-        <option value="2">Lines</option>
-        <option value="3">Words</option>
-        <option value="4">Regex</option>
-      </select>
+      <div id="selectWrapper" class="non-selectable">
+        <select id="selectValue" class="non-selectable">
+          <option value="0">Text</option>
+          <option value="1">Text + linebreaks</option>
+          <option value="2">Lines</option>
+          <option value="3">Words</option>
+          <option value="4">Regex</option>
+        </select>
+      </div>
+      <input id="regex" class="non-selectable" value="Enter Regex here!" type="text">
+
+      <textarea id="textArea" class="non-selectable">Write here or drop a file!</textarea>
+      <button id="submit" class="non-selectable">Run</button>
     </div>
-    <input id="regex" class="non-selectable" value="Enter Regex here!" type="text">
 
-    <textarea id="textArea" class="non-selectable">Write here or drop a file!</textarea>
-    <button id="submit" class="non-selectable">Run</button>
-  </div>
-
-  <canvas id='map' class="non-selectable"></canvas>
+    <canvas id='map' class="non-selectable"></canvas>
+  </aside>
 
 <script src="./assets/js/lib/pagemap.min.js" charset="utf-8"></script>
 <script src="./assets/js/modules/Setup.js"></script>

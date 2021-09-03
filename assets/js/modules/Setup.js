@@ -58,8 +58,8 @@ function minimapInit() {
         'h1,a': 'rgba(0,0,0,0.10)',
         'h2,h3,h4,span': 'red'
     },
-    back: 'rgba(0,0,0,0.02)',
-    view: 'rgba(0,0,0,0.05)',
+    back: 'rgba(0,0,0,0.1)',
+    view: 'rgba(0,0,0,0.15)',
     drag: 'rgba(0,0,0,0.10)',
     interval: null
   });

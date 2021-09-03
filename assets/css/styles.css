@@ -1,32 +1,14 @@
 body {
+  font-family: "Courier New", Courier, monospace;
+  margin: 0;
+  padding: 0;
   position: relative;
   width: 8000px;
   height: 8000px;
 }
 
-#menu {
-  position: fixed;
-  top: 5px !important;
-  left: 5px !important;
-}
-
 span:hover {
   outline: 1px gray solid;
-}
-
-#selectWrapper {
-  width: 200px;
-}
-
-#textArea,
-#dropArea {
-  width: 250px;
-  height: 100px;
-}
-
-#regex {
-  width: 250px;
-  display: none;
 }
 
 .draggable {
@@ -61,11 +43,46 @@ main {
   outline: 1px rgb(0, 0, 0) dotted;
 }
 
+/* SIDEBAR */
+aside {
+  position: fixed;
+  top: 0 !important;
+  left: 0 !important;
+  width: 350px;
+  height: 100vh;
+  background-color: #f8ceec;
+  background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
+  z-index: 101;
+}
+
+/* MENU */
+#menu {
+  position: fixed;
+  top: 20px !important;
+  left: 20px !important;
+}
+
+#selectWrapper {
+  width: 200px;
+}
+
+#textArea,
+#dropArea {
+  width: 250px;
+  height: 100px;
+}
+
+#regex {
+  width: 250px;
+  display: none;
+}
+
+/* MINIMAP */
 #map {
   position: fixed !important;
   width: 300px;
-  bottom: 5px !important;
-  left: 5px !important;
+  bottom: 20px !important;
+  left: 20px !important;
   top: unset !important;
   height: 100%;
   z-index: 100;
