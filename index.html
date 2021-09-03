@@ -12,79 +12,33 @@
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
     integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="./assets/js/lib/multidraggable.js" charset="utf-8"></script>
-  <style>
-    body {
-      position: relative;
-      width: 2000px;
-      height: 2000px;
-    }
-
-    span:hover {
-      outline: 1px gray solid;
-    }
-
-    #selectWrapper {
-      width: 200px;
-    }
-
-    #textArea,
-    #dropArea {
-      width: 250px;
-      height: 100px;
-    }
-
-    #regex {
-      width: 250px;
-      display: none;
-    }
-
-    .draggable {
-      position: absolute;
-      cursor: grab;
-      background: none;
-    }
-
-    .resizable {
-      /* width: 150px;
-        height: 150px; */
-      padding: 0.2em;
-    }
-
-    .ui-widget-content {
-      border: none;
-    }
-
-    .ui-selected {
-      outline: 1px red dotted;
-    }
-
-    .non-selectable,
-    main {
-      position: unset !important;
-      outline: unset !important;
-    }
-  </style>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 
 <body id="multidraggable" class="non-selectable">
-  <h1 id="title" class="non-selectable">Words Map</h1>
-  <div id="selectWrapper" class="non-selectable">
-    <select id="selectValue" class="non-selectable">
-      <option value="0">Text</option>
-      <option value="1">Text + linebreaks</option>
-      <option value="2">Lines</option>
-      <option value="3">Words</option>
-      <option value="4">Regex</option>
-    </select>
+  <div id="menu">
+    <h1 id="title" class="non-selectable">Words Map</h1>
+
+    <div id="selectWrapper" class="non-selectable">
+      <select id="selectValue" class="non-selectable">
+        <option value="0">Text</option>
+        <option value="1">Text + linebreaks</option>
+        <option value="2">Lines</option>
+        <option value="3">Words</option>
+        <option value="4">Regex</option>
+      </select>
+    </div>
+    <input id="regex" class="non-selectable" value="Enter Regex here!" type="text">
+
+    <textarea id="textArea" class="non-selectable">Write here or drop a file!</textarea>
+    <button id="submit" class="non-selectable">Run</button>
   </div>
-  <input id="regex" class="non-selectable" value="Enter Regex here!" type="text">
 
-  <textarea id="textArea" class="non-selectable">Write here or drop a file!</textarea>
-  <button id="submit" class="non-selectable">Run</button>
-</body>
+  <canvas id='map' class="non-selectable"></canvas>
 
+<script src="./assets/js/lib/pagemap.min.js" charset="utf-8"></script>
 <script src="./assets/js/modules/Setup.js"></script>
 <script src="./assets/js/modules/Splitter.js"></script>
 <script src="./assets/js/modules/Events.js"></script>

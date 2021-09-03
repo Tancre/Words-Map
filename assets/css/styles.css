@@ -1,0 +1,72 @@
+body {
+  position: relative;
+  width: 8000px;
+  height: 8000px;
+}
+
+#menu {
+  position: fixed;
+  top: 5px !important;
+  left: 5px !important;
+}
+
+span:hover {
+  outline: 1px gray solid;
+}
+
+#selectWrapper {
+  width: 200px;
+}
+
+#textArea,
+#dropArea {
+  width: 250px;
+  height: 100px;
+}
+
+#regex {
+  width: 250px;
+  display: none;
+}
+
+.draggable {
+  position: absolute;
+  cursor: grab;
+  background: none;
+  display: block ruby;
+}
+
+.resizable {
+  /* width: 150px;
+      height: 150px; */
+  padding: 0.2em;
+}
+
+.ui-widget-content {
+  border: none;
+}
+
+.ui-selected {
+  outline: 1px red dotted;
+}
+
+.non-selectable,
+main {
+  position: unset !important;
+  outline: unset !important;
+}
+
+.ui-selectable-helper {
+  position: absolute;
+  outline: 1px rgb(0, 0, 0) dotted;
+}
+
+#map {
+  position: fixed !important;
+  width: 300px;
+  bottom: 5px !important;
+  left: 5px !important;
+  top: unset !important;
+  height: 100%;
+  z-index: 100;
+}
