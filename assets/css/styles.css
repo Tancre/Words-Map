@@ -7,7 +7,8 @@ body {
   height: 8000px;
 }
 
-span:hover {
+span:hover,
+img:hover {
   outline: 1px gray solid;
 }
 
@@ -15,12 +16,9 @@ span:hover {
   position: absolute;
   cursor: grab;
   background: none;
-  /* display: block ruby; */
 }
 
 .resizable {
-  /* width: 150px;
-      height: 150px; */
   padding: 0.2em;
 }
 

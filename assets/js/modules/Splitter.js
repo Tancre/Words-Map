@@ -1,10 +1,10 @@
 class Splitter {
-  constructor(content, regex) {
+  constructor(content, regex, source) {
     // Get actual width and height of the center of the screen
     // Top-Left position + half of the total width-height of the window
     this.w = window.pageXOffset + (window.innerWidth/2);   
     this.h = window.pageYOffset + (window.innerHeight/2);
-    // Content of the text/drop area & regex area
+    // Content of the text/drop area & regex area & source
     this.content = content;
     this.contentRegex = regex;
   }
@@ -87,7 +87,7 @@ class Splitter {
   createElt(elt) {
     // Create draggable element + class
     const p = createSpan(elt);
-    p.addClass('ui-widget-content draggable resizable');
+    p.addClass('ui-widget-content draggable');
     // Center Position counting the center of the elt created
     const posX = this.w - (p.elt.offsetWidth/2);
     const posY = this.h - (p.elt.offsetHeight/2);
@@ -101,7 +101,7 @@ class Splitter {
   createMultiElt(elt, y) {
     // Create draggable element + class
     const p = createSpan(elt);
-    p.addClass('ui-widget-content draggable resizable');
+    p.addClass('ui-widget-content draggable');
     // Center Position counting the center of the elt created and shifting y multiple elements
     const posX = this.w - (p.elt.offsetWidth/2);
     let posY = this.h - (p.elt.offsetHeight/2) - 500 + y;
@@ -109,5 +109,13 @@ class Splitter {
     // Add width (Prevent width auto)
     const w = p.width + 1                // +1 fix the right width 
     p.style('width', w + 'px')
+  }
+
+  createImage() {
+    const img = createImg(this.contentRegex, this.content);
+    img.addClass('resizable');
+    // const posX = this.w - (img.elt.offsetWidth/2);
+    // const posY = this.h - (img.elt.offsetHeight/2);
+    // img.position(posX, posY)
   }
 }

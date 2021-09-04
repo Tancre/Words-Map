@@ -17,7 +17,7 @@ window.addEventListener('mouseup', () => minimapInit());
 // Toggle Regex Input
 $(document).on('change', '#selectValue', () => {
     const selected = document.querySelector('select').value;
-    if (selected == 4 || selected == 5) {
+    if (selected == 4 || selected == 5 || selected == 6) {
         $('#regex').css('display', 'block');
     } else {
         $('#regex').css('display', 'none');
