@@ -1,35 +1,42 @@
-function setup() {
-  noCanvas();
-  minimapInit();
+// This is a P5.js function
+function setup() {   
+  noCanvas();       // Disable canvas for P5.js
+  minimapInit();    // Init minimap (minimap.js)
   
-  const textArea = select('#textArea');
-  const submit = select('#submit');
+  const textArea = select('#textArea');    // Init text/drop area
+  const submit = select('#submit');        // Init submit button
+  const regexArea = select('#regex');      // Init regex area
 
+  // Init drag and drop files
   dropFile(textArea);
 
+  // When the submit button is pressed
   submit.mousePressed(() => {
-    const selected = document.querySelector('select').value;
-    const content = textArea.value();
+    const selected = document.querySelector('select').value;  // Get which funciton to apply when splitting text
+    const mainContent = textArea.value();                         // Get text from text/drop area
+    const contentRegex = regexArea.value();                   // Get regex from regex area
 
-    const splitter = new Splitter(content);
+    const splitter = new Splitter(mainContent, contentRegex)  // Init splitter with our text
 
-    switch (parseInt(selected)) {
+    // Depending on the function selected to split the text:  
+    switch (parseInt(selected)) {     
       case 0:
-        splitter.fullText();
+        splitter.fullText();        // Create one element with full text on a line
         break;
       case 1:
-        splitter.textLinebreak()
+        splitter.textLinebreak()    // Create one element with full text and linebreaks
         break;
       case 2:
-        splitter.lines()
+        splitter.lines()            // Create multiple elements with each line
         break;
       case 3:
-        splitter.words()
+        splitter.words()            // Create multiple elements with each word
         break;
       case 4:
-        splitter.textLinebreak()
+        splitter.splitByTokens()    // Create multiple elements splitting based on the charachters regex function inserted
         break;
-      case 4:
+      case 5:
+        splitter.regexMatch()    
         break;
     }
 
@@ -38,18 +45,24 @@ function setup() {
   });
 }
 
+// Drag and drop files (with p5.js)
 function dropFile(area) {
-  dropzone = area
-  dropzone.dragOver(() => dropzone.style('background-color', '#ccc'));
+  // The drop-zone is the same as text area
+  dropzone = area   
+
+  // UI dorp-zone
+  dropzone.dragOver(() => dropzone.style('background-color', '#ccc'));      
   dropzone.dragLeave(() => dropzone.style('background-color', '#fff'));
   dropzone.drop(gotFile, () => dropzone.style('background-color', '#fff'));
 
+  // Display file in text area
   function gotFile(file) {
     const textArea = select('#textArea');
     textArea.value(file.data);
   }
 }
 
+// Settings minimap (minimap.js)
 function minimapInit() {
   pagemap(document.querySelector('#map'), {
     viewport: null,
