@@ -15,7 +15,7 @@ span:hover {
   position: absolute;
   cursor: grab;
   background: none;
-  display: block ruby;
+  /* display: block ruby; */
 }
 
 .resizable {
@@ -53,6 +53,7 @@ aside {
   background-color: #f8ceec;
   background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
   z-index: 101;
+  box-shadow: 2px 0px 10px #747474;
 }
 
 /* MENU */

@@ -11,8 +11,7 @@ class Splitter {
 
   textLinebreak() {
     const lines = this.content.split("\n");
-    console.log(lines);
-    const mergedLines = join(lines, "<br />")
+    const mergedLines = join(lines, "<br>")
     this.createElt(mergedLines);
   }
 
@@ -36,11 +35,16 @@ class Splitter {
   }
 
   createElt(elt) {
+    // Create draggable element
     let p = createSpan(elt);
     p.addClass('ui-widget-content draggable resizable');
+    // Center Position
     let posX = this.w - (p.elt.offsetWidth/2);
     let posY = this.h - (p.elt.offsetHeight/2);
     p.position(posX, posY);
+    // Add width (Prevent width auto)
+    const w = p.width + 1
+    p.style('width', w + 'px')
   }
 
   createEltPos(elt, y) {
