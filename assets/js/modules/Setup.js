@@ -1,3 +1,5 @@
+let zIndex = 3;
+
 // This is a P5.js function
 function setup() {   
   noCanvas();       // Disable canvas for P5.js
@@ -40,7 +42,6 @@ function setup() {
         break;
       case 6:
         splitter.createImage()
-        setupUiWrapper()
         break;
     }
 
@@ -82,24 +83,5 @@ function minimapInit() {
   });
 }
 
-function setupUiWrapper(){
-  let uiWrappers = document.querySelectorAll('.ui-wrapper');
-  console.log(uiWrappers)
-  uiWrappers.forEach(wrap => wrap.classList.add('draggable', 'resizable'));
 
-  // this.w = window.pageXOffset + (window.innerWidth/2);   
-  // this.h = window.pageYOffset + (window.innerHeight/2);
-
-  // const posX = this.w - (img.elt.offsetWidth/2);
-  // const posY = this.h - (img.elt.offsetHeight/2);
-  // img.position(posX, posY)
-
-    // $('img').last(function() {
-    //   console.log(this)
-    //   var newDiv = $('<div/>').addClass('draggable').addClass('ui-widget-content');
-    //   $(this).before(newDiv);
-    //   var next = $(this).next();
-    //   newDiv.append(this).append(next);
-    // });
-}
 

@@ -83,6 +83,7 @@
                             start: function (event, ui) {
                                 var pos = $(this).position();
                                 $.each(opts.group || {}, function (key, value) {
+                                    console.log(this)
                                     var elemPos = $(value).position();
                                     leftOffset[key] = elemPos.left - pos.left;
                                     topOffset[key] = elemPos.top - pos.top;

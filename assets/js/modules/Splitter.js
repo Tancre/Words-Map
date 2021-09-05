@@ -1,5 +1,5 @@
 class Splitter {
-  constructor(content, regex, source) {
+  constructor(content, regex) {
     // Get actual width and height of the center of the screen
     // Top-Left position + half of the total width-height of the window
     this.w = window.pageXOffset + (window.innerWidth/2);   
@@ -7,6 +7,7 @@ class Splitter {
     // Content of the text/drop area & regex area & source
     this.content = content;
     this.contentRegex = regex;
+    this.WidthAuto = true;
   }
 
   // Full text on a line
@@ -92,9 +93,14 @@ class Splitter {
     const posX = this.w - (p.elt.offsetWidth/2);
     const posY = this.h - (p.elt.offsetHeight/2);
     p.position(posX, posY);
-    // Add width (Prevent width auto)
-    const w = p.width + 1
-    p.style('width', w + 'px')
+    // Add width (Prevent width auto) 
+    if (this.widthAuto) {
+      const w = p.width + 1
+      p.style('width', w + 'px')
+    }
+    // Set zIndex
+    p.style('z-index', zIndex)
+    return zIndex++
   }
 
   // Create multiple elementss
@@ -109,13 +115,15 @@ class Splitter {
     // Add width (Prevent width auto)
     const w = p.width + 1                // +1 fix the right width 
     p.style('width', w + 'px')
+    // Set zIndex
+    p.style('z-index', zIndex)
+    return zIndex++
   }
 
   createImage() {
-    const img = createImg(this.contentRegex, this.content);
-    img.addClass('resizable');
-    // const posX = this.w - (img.elt.offsetWidth/2);
-    // const posY = this.h - (img.elt.offsetHeight/2);
-    // img.position(posX, posY)
+    const img = '<img class="resizable" src="'+ this.contentRegex +'" alt="'+ this.content +'" />'
+    this.widthAuto = false;
+    this.createElt(img)
+    this.widthAuto = true;
   }
 }

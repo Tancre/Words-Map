@@ -1,6 +1,5 @@
 class DragResize {
     constructor() {
-        this.zIndex = 3;
         this.drag();
         this.setZindex();
         this.handleCursor();
@@ -11,7 +10,7 @@ class DragResize {
     drag() {
         $('.draggable').draggable({ containment: "body" }, {            // Setup dragging and containment
             start: (event, ui) => {
-                $(event.target).css("z-index", this.zIndex++)    // Initialize z-index for handelr
+                $(event.target).css("z-index", zIndex++)    // Initialize z-index for handelr
             }
         });
     }
@@ -21,11 +20,13 @@ class DragResize {
     }
 
     setZindex() {
-        $('#dragZone div').click(event => {                              // Setup z-index handler
-            $(event.target).addClass('top').removeClass('bottom');
-            $(event.target).siblings().removeClass('top').addClass('bottom');
-            $(event.target).css("z-index", this.zIndex++);
+        $('#dragZone div').mousedown(function() {                         // Setup z-index handler
+            $(this).addClass('top').removeClass('bottom');
+            $(this).siblings().removeClass('top').addClass('bottom');
+            $(this).css("z-index", zIndex++);
+            return zIndex++
         });
+
     }
 
     handleCursor() {
