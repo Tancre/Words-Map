@@ -17,10 +17,21 @@ window.addEventListener('mouseup', () => minimapInit());
 // Toggle Regex Input
 $(document).on('change', '#selectValue', () => {
     const selected = document.querySelector('select').value;
-    if (selected == 4 || selected == 5 || selected == 6) {
+    if (selected == 4) {
         $('#regex').css('display', 'block');
-    } else {
+        $('#regex').val('Insert regex or tokens');
+        $('#textArea').val('Write here or drop a file!');
+    } else if (selected == 5) {
+        $('#regex').css('display', 'block');
+        $('#regex').val('Insert regex');
+        $('#textArea').val('Write here or drop a file!');
+    } else if (selected == 6) {
+        $('#regex').css('display', 'block');
+        $('#regex').val('Insert link'); 
+        $('#textArea').val('Just a description');}
+    else {
         $('#regex').css('display', 'none');
+        $('#textArea').val('Write here or drop a file!');
     }
 });
 

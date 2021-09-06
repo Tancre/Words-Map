@@ -1,5 +1,5 @@
 class Splitter {
-  constructor(content, regex) {
+  constructor(content, regex, css) {
     // Get actual width and height of the center of the screen
     // Top-Left position + half of the total width-height of the window
     this.w = window.pageXOffset + (window.innerWidth/2);   
@@ -7,7 +7,8 @@ class Splitter {
     // Content of the text/drop area & regex area & source
     this.content = content;
     this.contentRegex = regex;
-    this.WidthAuto = true;
+    this.css = css;
+    this.widthAuto = true;
   }
 
   // Full text on a line
@@ -89,14 +90,15 @@ class Splitter {
     // Create draggable element + class
     const p = createSpan(elt);
     p.addClass('ui-widget-content draggable');
+    // Add css
+    p.elt.setAttribute("style", this.css);
     // Center Position counting the center of the elt created
     const posX = this.w - (p.elt.offsetWidth/2);
     const posY = this.h - (p.elt.offsetHeight/2);
     p.position(posX, posY);
     // Add width (Prevent width auto) 
     if (this.widthAuto) {
-      const w = p.width + 1
-      p.style('width', w + 'px')
+      p.style('width', 'max-content')
     }
     // Set zIndex
     p.style('z-index', zIndex)
@@ -108,22 +110,23 @@ class Splitter {
     // Create draggable element + class
     const p = createSpan(elt);
     p.addClass('ui-widget-content draggable');
+    // Add css
+    p.elt.setAttribute("style", this.css);
     // Center Position counting the center of the elt created and shifting y multiple elements
     const posX = this.w - (p.elt.offsetWidth/2);
     let posY = this.h - (p.elt.offsetHeight/2) - 500 + y;
     p.position(posX, posY);
     // Add width (Prevent width auto)
-    const w = p.width + 1                // +1 fix the right width 
-    p.style('width', w + 'px')
+    p.style('width', 'max-content')
     // Set zIndex
     p.style('z-index', zIndex)
     return zIndex++
+    
   }
 
   createImage() {
     const img = '<img class="resizable" src="'+ this.contentRegex +'" alt="'+ this.content +'" />'
     this.widthAuto = false;
     this.createElt(img)
-    this.widthAuto = true;
   }
 }

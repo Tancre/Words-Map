@@ -8,6 +8,7 @@ function setup() {
   const textArea = select('#textArea');    // Init text/drop area
   const submit = select('#submit');        // Init submit button
   const regexArea = select('#regex');      // Init regex area
+  const cssArea = select('#cssArea');      // Init regex area
 
   // Init drag and drop files
   dropFile(textArea);
@@ -17,8 +18,9 @@ function setup() {
     const selected = document.querySelector('select').value;  // Get which funciton to apply when splitting text
     const mainContent = textArea.value();                         // Get text from text/drop area
     const contentRegex = regexArea.value();                   // Get regex from regex area
+    const contentCss = cssArea.value(); 
 
-    const splitter = new Splitter(mainContent, contentRegex)  // Init splitter with our text
+    const splitter = new Splitter(mainContent, contentRegex, contentCss)  // Init splitter with our text
 
     // Depending on the function selected to split the text:  
     switch (parseInt(selected)) {     

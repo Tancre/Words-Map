@@ -65,15 +65,16 @@ aside {
   width: 200px;
 }
 
-#textArea,
-#dropArea {
-  width: 250px;
-  height: 100px;
-}
-
 #regex {
   width: 250px;
   display: none;
+}
+
+#textArea,
+#dropArea,
+#cssArea {
+  width: 250px;
+  height: 100px;
 }
 
 /* MINIMAP */
